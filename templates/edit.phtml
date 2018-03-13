@@ -1,0 +1,23 @@
+<?= $this->fetch('header.phtml') ?>
+<form method="POST" action="/board/<?= e($board['id']) ?>">
+    <input type="hidden" name="_METHOD" value="put">
+    <div class="card">
+      <div class="card-body">
+        <h2 class="card-title">コメント編集</h2>
+        <div class="card-text">
+          <div class="form-group">
+            <label for="subject">コメント</label>
+            <input type="text" name="comment" id="comment" class="form-control" value="<?= e($board['comment']) ?>">
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+          <button class="btn btn-primary">更新</button>
+          <button class="btn btn-primary right">戻る</button>
+      </div>
+    </div>
+  </form>
+
+
+
+<?$this->fetch('footer.phtml') ?>
