@@ -2,52 +2,63 @@
 
 
 
-    <div class="card">
-        <div class="card-body">
-            <div class="card-text">
-                <ul class="list-group">
-                    <?php foreach ($users as $user): ?>
+    <div class="row">
+        <div class="col s12">
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-title center">簡易掲示板</span>
 
-                        <li class="list-group-item large">
-                            <?= htmlspecialchars($user['userName'], ENT_QUOTES, 'UTF-8', false) ?><br>
+                    <p>会員登録すれば、読めるし、書き込めるよ。なんでも書き込んでね！</p>
 
-
-<!--                            <a href="/board/--><?//= e($user['id']) ?><!--/edit" class="btn btn-primary right">編集</a>-->
-<!--                            <button class="btn btn-danger right" data-toggle="modal" data-target="#deleteModal--><?//= $user['id'] ?><!--">削除</button></li>-->
-
-
-                        <!-- modal-->
-<!--                        <div class="modal fade" id="deleteModal--><?//= $user['id'] ?><!--" tabindex="-1" role="dialog">-->
-<!--                            <div class="modal-dialog" role="document">-->
-<!--                                <div class="modal-content">-->
-<!--                                    <div class="modal-header">-->
-<!--                                        <h5 class="modal-title">投稿の削除</h5>-->
-<!--                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-<!--                                            <span aria-hidden="true">&times;</span>-->
-<!--                                        </button>-->
-<!--                                    </div>-->
-<!--                                    <div class="modal-body">-->
-<!--                                        <p>本当に削除してよろしいですか？</p>-->
-<!--                                    </div>-->
-<!--                                    <form method="post" action="/board/--><?//= $user['id'] ?><!--" id="modal-delete--><?//=$user['id'] ?><!--">-->
-<!--                                        <input type="hidden" name="_METHOD" value="delete">-->
-<!---->
-<!--                                        <button type="submit"  form="modal-delete--><?//=$user['id'] ?><!--" class="btn btn-danger right">削除</button>-->
-<!--                                        <button type="button" class="btn btn-secondary right" data-dismiss="modal">キャンセル</button>-->
-<!--                                        -->
-<!--                                    </form>-->
-<!--                                </div>-->
-<!--                                -->
-<!--                            </div>-->
-<!--                        </div>-->
-
-                    <?php endforeach; ?>
-                </ul>
-
+                </div>
+                <div class="card-action">
+                    <a class="btn" href="/register">新規登録</a>
+                    <a class="btn right" href="/login">ログイン</a>
+                </div>
             </div>
         </div>
     </div>
-    <a href="/logout">logout</a>
 
 
-<?= $this->fetch('footer.phtml') ?>
+
+
+
+<p class="#00bfa5 teal accent-4">実装機能</p>
+
+<ul>
+    <li>ログイン</li>
+    <li>ログインチェック</li>
+    <li>mypage</li>
+    <li>投稿、編集、削除</li>
+
+</ul>
+
+
+
+
+<p class="#00bfa5 teal accent-4">頑張ったところ</p>
+
+    <ul>
+        <li>routing(mypageなどというものを作ってしまいページ数が増え、なんども見直した)</li>
+        <li>relationDB（繋ぐのむずかった）</li>
+        <li>modal（ワンクッションのはずが...）</li>
+        <li>materializeのjs(結局動かない)</li>
+    </ul>
+
+    <p class="#00bfa5 teal accent-4">やりたかったこと（今月末までには...）</p>
+
+    <ul>
+        <li>見栄えを気にする（せっかくmaterialize使ってるのに...）</li>
+        <li>バリデーション（途中）</li>
+        <li>エラーを返す</li>
+        <li>投稿数のグラフ化</li>
+        <li>いいね</li>
+    </ul>
+
+
+
+
+
+
+
+<?$this->fetch('footer.phtml') ?>

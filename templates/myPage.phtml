@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8"/>
+    <title>掲示板</title>
+
+
+    <!--    bootstrap-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <!--    jquery-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+</head>
+<body>
+<div class="container">
+
+    <span><?= $_SESSION['user']['userName']?>さん</span><br>
+
+
+
+
+
+        <div class="card">
+
+
+
+        <div class="card-body">
+            <div class="row">
+                <div class="col s12">
+                    <div class="card ">
+                        <div class="card-content">
+                            <span class="card-title">New Comment</span>
+
+
+                            <form method="POST" class="col s12" action="/newComment/<?= htmlspecialchars($users['id'], ENT_QUOTES, 'UTF-8', false) ?>">
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <textarea id="textarea1" class="materialize-textarea" data-length="120" name="comment"></textarea>
+                                        <label for="textarea1">Textarea</label>
+                                    </div>
+                                </div>
+                                <input type="submit" class="btn right">
+                            </form>
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-text">
+                <ul class="list-group">
+                    <?php foreach ($users as $user): ?>
+
+
+
+                    <li class="list-group-item large">
+                        <?= htmlspecialchars($user['userName'], ENT_QUOTES, 'UTF-8', false) ?><br>
+                        <?= htmlspecialchars($user['comment'], ENT_QUOTES, 'UTF-8', false) ?><br>
+                        <a href="/board/<?= e($user['userName']) ?>/edit" class="btn btn-primary right">編集</a>
+                        <button class="btn btn-danger right" data-toggle="modal" data-target="#deleteModal<?= $user['userName'] ?>">削除</button></li>
+
+
+
+
+
+
+
+
+                        <!-- modal-->
+                        <div class="modal fade" id="deleteModal<?= $user['userName'] ?>" tabindex="-1" role="dialog">
+                            <div class="modal-dialog" role="document"><div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">投稿の削除</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>本当に削除してよろしいですか？</p>
+                                    </div>
+                                    <form method="post" action="/board/<?= $user['userName'] ?>" id="modal-delete<?=$user['userName'] ?>"><input type="hidden" name="_METHOD" value="delete">
+                                        <button type="submit"  form="modal-delete<?=$user['userName'] ?>" class="btn btn-danger right">削除</button>
+                                        <button type="button" class="btn btn-secondary right" data-dismiss="modal">キャンセル</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <a href="/timeLine">timeLine</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</body>
+</html>

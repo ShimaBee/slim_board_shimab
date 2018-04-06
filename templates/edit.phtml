@@ -1,4 +1,7 @@
 <?= $this->fetch('header.phtml') ?>
+
+
+
 <form method="POST" action="/board/<?= e($board['id']) ?>">
     <input type="hidden" name="_METHOD" value="put">
     <div class="card">
